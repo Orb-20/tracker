@@ -120,7 +120,7 @@ java -jar target/courier-tracking-system-1.0.0.jar
 1. Open IntelliJ IDEA → File → Open → select the `courier-tracking-system` folder
 2. IntelliJ detects `pom.xml` automatically and downloads dependencies
 3. Open `CourierTrackingSystemApplication.java`
-4. Click the green ▶ Run button
+4. Click the green Run button
 
 ---
 
@@ -340,4 +340,4 @@ Step 8: Check  H2 console            → SELECT * FROM COURIER;
 mvn test
 ```
 
-All 6 integration tests should pass ✅
+All 6 integration tests should pass 
