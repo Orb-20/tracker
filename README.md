@@ -1,11 +1,11 @@
-# 📦 Courier Tracking System — Spring Boot REST API
+# Courier Tracking System — Spring Boot REST API
 
 A beginner-friendly Spring Boot application demonstrating clean layered architecture,
 REST API design, JPA database integration, validation, and global exception handling.
 
 ---
 
-## 🗂️ Project Structure
+## Project Structure
 
 ```
 courier-tracking-system/
@@ -49,7 +49,7 @@ courier-tracking-system/
 
 ---
 
-## 🏗️ Architecture Overview
+## Architecture Overview
 
 ```
 Client (Postman / Browser)
@@ -82,7 +82,7 @@ Client (Postman / Browser)
 
 ---
 
-## ⚙️ Prerequisites
+## Prerequisites
 
 | Tool      | Version  | Download                          |
 |-----------|----------|-----------------------------------|
@@ -92,7 +92,7 @@ Client (Postman / Browser)
 
 ---
 
-## 🚀 How to Run
+##  How to Run
 
 ### Option 1: Using Maven Wrapper (recommended)
 
@@ -124,7 +124,7 @@ java -jar target/courier-tracking-system-1.0.0.jar
 
 ---
 
-## ✅ Verify it Started
+##  Verify it Started
 
 Look for this in the console:
 
@@ -139,7 +139,7 @@ Look for this in the console:
 
 ---
 
-## 🗃️ H2 Database Console
+##  H2 Database Console
 
 1. Open browser → http://localhost:8080/h2-console
 2. Fill in:
@@ -162,7 +162,7 @@ SELECT * FROM COURIER WHERE TRACKING_NUMBER = 'TRK-XXXXXXXX';
 
 ---
 
-## 📮 API Reference + Postman Testing Guide
+##  API Reference + Postman Testing Guide
 
 ### Base URL: `http://localhost:8080`
 
@@ -186,7 +186,7 @@ SELECT * FROM COURIER WHERE TRACKING_NUMBER = 'TRK-XXXXXXXX';
 }
 ```
 
-**✅ Success Response (HTTP 201 Created):**
+** Success Response (HTTP 201 Created):**
 ```json
 {
     "id": 1,
@@ -200,7 +200,7 @@ SELECT * FROM COURIER WHERE TRACKING_NUMBER = 'TRK-XXXXXXXX';
 }
 ```
 
-**❌ Validation Error (HTTP 400):**
+** Validation Error (HTTP 400):**
 ```json
 // Body with blank senderName: { "senderName": "", ... }
 {
@@ -215,14 +215,14 @@ SELECT * FROM COURIER WHERE TRACKING_NUMBER = 'TRK-XXXXXXXX';
 
 ---
 
-### ② GET /courier/{trackingNumber} — Track Shipment
+###  GET /courier/{trackingNumber} — Track Shipment
 
 | Field      | Value                                          |
 |------------|------------------------------------------------|
 | Method     | GET                                            |
 | URL        | `http://localhost:8080/courier/TRK-3F2A1B4C`   |
 
-**✅ Success Response (HTTP 200 OK):**
+** Success Response (HTTP 200 OK):**
 ```json
 {
     "id": 1,
@@ -236,7 +236,7 @@ SELECT * FROM COURIER WHERE TRACKING_NUMBER = 'TRK-XXXXXXXX';
 }
 ```
 
-**❌ Not Found (HTTP 404):**
+** Not Found (HTTP 404):**
 ```json
 {
     "timestamp": "2024-04-01T10:31:00",
@@ -249,7 +249,7 @@ SELECT * FROM COURIER WHERE TRACKING_NUMBER = 'TRK-XXXXXXXX';
 
 ---
 
-### ③ PUT /courier/{id}/status — Update Status
+###  PUT /courier/{id}/status — Update Status
 
 | Field      | Value                               |
 |------------|-------------------------------------|
@@ -272,7 +272,7 @@ SELECT * FROM COURIER WHERE TRACKING_NUMBER = 'TRK-XXXXXXXX';
 - `DELIVERED`
 - `CANCELLED`
 
-**✅ Success Response (HTTP 200 OK):**
+** Success Response (HTTP 200 OK):**
 ```json
 {
     "id": 1,
@@ -286,7 +286,7 @@ SELECT * FROM COURIER WHERE TRACKING_NUMBER = 'TRK-XXXXXXXX';
 }
 ```
 
-**❌ Invalid Enum (HTTP 400):**
+** Invalid Enum (HTTP 400):**
 ```json
 // Body: { "status": "FLYING" }
 {
@@ -298,7 +298,7 @@ SELECT * FROM COURIER WHERE TRACKING_NUMBER = 'TRK-XXXXXXXX';
 
 ---
 
-## 🧪 Full Postman Test Flow
+##  Full Postman Test Flow
 
 Follow these steps in order to simulate a complete shipment lifecycle:
 
@@ -315,7 +315,7 @@ Step 8: Check  H2 console            → SELECT * FROM COURIER;
 
 ---
 
-## 🔑 Key Concepts Demonstrated
+##  Key Concepts Demonstrated
 
 | Concept                  | Where                                  |
 |--------------------------|----------------------------------------|
@@ -331,25 +331,6 @@ Step 8: Check  H2 console            → SELECT * FROM COURIER;
 | Integration Testing      | `CourierControllerTest.java`           |
 
 ---
-
-## 🔄 Switching to MySQL (optional)
-
-1. Replace H2 dependency in `pom.xml` with:
-```xml
-<dependency>
-    <groupId>com.mysql</groupId>
-    <artifactId>mysql-connector-j</artifactId>
-</dependency>
-```
-
-2. Update `application.properties`:
-```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/courier_db?createDatabaseIfNotExist=true
-spring.datasource.username=root
-spring.datasource.password=your_password
-spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
-spring.jpa.database-platform=org.hibernate.dialect.MySQLDialect
-```
 
 ---
 
